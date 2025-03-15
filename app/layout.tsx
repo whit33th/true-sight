@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider  dynamic afterSignOutUrl={pageConfig.signInPage}>
+    <ClerkProvider afterSignOutUrl={pageConfig.signInPage}>
       <html lang="en" className="h-full">
         <body
           className={`${notoSans.variable} flex h-screen flex-col bg-neutral-50 text-neutral-950 antialiased dark:bg-neutral-950 dark:text-neutral-50`}
