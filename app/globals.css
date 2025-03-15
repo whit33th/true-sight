@@ -1,42 +1,72 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+@theme {
+  --color-background: #090909;
+  --color-foreground: #f9f9f9;
+  --color-button: #3c3333;
+  --color-button-secondary: #532e19;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer styles {
+  .clip-path-2 {
+    clip-path: polygon(
+      8px 0,
+      calc(100% - 8px) 0,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      0 calc(100% - 8px),
+      0 8px
+    );
+  }
+  .clip-path-3 {
+    clip-path: polygon(
+      12px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      12px 100%,
+      0 calc(100% - 12px),
+      0 12px
+    );
+  }
+  .clip-path-4 {
+    clip-path: polygon(
+      16px 0,
+      calc(100% - 16px) 0,
+      100% 16px,
+      100% calc(100% - 16px),
+      calc(100% - 16px) 100%,
+      16px 100%,
+      0 calc(100% - 16px),
+      0 16px
+    );
   }
 }
 
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* color: var(--color-foreground);
+  background: var(--color-background); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+::-webkit-scrollbar {
+  width: 7px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+::-webkit-scrollbar-thumb {
+  background: rgb(40, 40, 40);
+  border-radius: 10px;
+  background-clip: padding-box;
+  transition: 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(180, 180, 180);
+  background-clip: padding-box;
 }
