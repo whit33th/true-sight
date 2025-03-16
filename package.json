@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build ",
     "start": "next start",
     "lint": "next lint"
   },
@@ -35,7 +35,7 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.6",
-    "eslint": "^9",
+    "eslint": "^9.22.0",
     "eslint-config-next": "15.2.1",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.5.3",

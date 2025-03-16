@@ -3,13 +3,13 @@ import { userIds } from "@/helpers/constants/interfaces/riot";
 import {
   Platform,
   PLATFORM_DISPLAY_NAMES,
-  PLATFORM_HOSTS,
+ 
 } from "@/helpers/constants/types/riot";
 import { ChevronDown, Send } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import BorderFigure from "../UI/figures/border";
-import InputError from "../UI/inputs/errorInputs";
+
 import useUpdateRiotId from "@/hooks/updateRiotId";
 import useGetRiotUser from "@/hooks/useQueries/useGetRiotUser";
 

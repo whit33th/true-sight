@@ -37,17 +37,10 @@ export default function ProfileClientPage({
     userRank: "II",
   };
 
-  const [riotId, setRiotId] = useState("");
-  const [winRate, setWinRate] = useState(65); // Example value - would come from API
-  const [userLevel, setUserLevel] = useState(168); // Example value
-  const [userRank, setUserRank] = useState("II"); // Example value
+  const [winRate] = useState(65); // Example value - would come from API
+  const [userLevel] = useState(168); // Example value
+  const [userRank] = useState("II"); // Example value
   const [activeTab, setActiveTab] = useState<ProfileTab>("overview");
-
-  const handleRiotIdSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Logic to submit Riot ID to backend
-    console.log("Submitting Riot ID:", riotId);
-  };
 
   // Tab configuration
   const tabs = [
