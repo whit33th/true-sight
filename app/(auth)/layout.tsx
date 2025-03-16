@@ -8,8 +8,9 @@ import { redirect } from "next/navigation";
 export default async function layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const user = await auth();
-  if (user.userId) {
+  const { userId } = await auth();
+  const isAuth = !!userId;
+  if (isAuth) {
     redirect(pageConfig.home);
   }
   return (

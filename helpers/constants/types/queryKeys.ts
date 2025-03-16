@@ -1,7 +1,8 @@
-import { riotId } from "../interfaces/riot";
+import { PlatformPUUID, userIds } from "../interfaces/riot";
 
 export type QueryKeys = {
-  uuid: [riotId];
+  getAccount: [userIds];
+  leagueEntries: [PlatformPUUID];
   summoner: [name: string];
   matches: [page: number, count: number];
   champion: [id: number];

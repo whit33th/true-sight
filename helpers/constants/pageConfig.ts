@@ -1,8 +1,9 @@
 class PageConfig {
   home = "/";
   stats = "/stats";
-  signInPage = "/sign-in";
-  signUpPage = "/sign-up";
+  signIn = "/sign-in";
+  signUp = "/sign-up";
+  profile = "/profile";
 }
 
 export const pageConfig = new PageConfig();

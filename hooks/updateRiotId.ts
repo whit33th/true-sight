@@ -1,16 +1,37 @@
-import { riotId } from "@/helpers/constants/interfaces/riot";
+import { userIds } from "@/helpers/constants/interfaces/riot";
+import { accountService } from "@/helpers/services/account";
 import { useUser } from "@clerk/nextjs";
+import useGetRiotUser from "./useQueries/useGetRiotUser";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { queryKey } from "@/helpers/constants/types/queryKeys";
 
 export default function useUpdateRiotId() {
   const { user } = useUser();
 
   const prevMetadata = user?.unsafeMetadata || {};
 
-  function update({ name, tag }: riotId) {
-    user?.update({
-      unsafeMetadata: { ...prevMetadata, riotId: `${name}#${tag}` },
-    });
+  async function updateRiotId({ name, tag, platform }: userIds) {
+    if (!user) return;
+
+    try {
+      await user.update({
+        unsafeMetadata: {
+          ...prevMetadata,
+
+          name: name,
+          tag: tag,
+          platform: platform,
+        },
+      });
+
+      const { toast } = await import("sonner");
+      toast.success("Riot ID updated successfully");
+    } catch (error) {
+      const { toast } = await import("sonner");
+      toast.error("Failed to update Riot ID");
+      console.error("Error updating Riot ID:", error);
+    }
   }
 
-  return { update };
+  return { update: updateRiotId };
 }

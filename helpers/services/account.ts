@@ -1,8 +1,8 @@
 import axios from "axios";
-import { riotId } from "../constants/interfaces/riot";
+import { userIds } from "../constants/interfaces/riot";
 
 class AccountService {
-  async getAccountById({ name, tag, region }: riotId) {
+  async getAccountByTag({ name, tag, region = "europe" }: userIds) {
     const response = await axios.get(
       `https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/${tag}?api_key=${process.env.RIOT_API_KEY}`,
     );

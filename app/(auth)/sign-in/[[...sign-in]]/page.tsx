@@ -14,7 +14,7 @@ export default function SignInPage() {
             Login
           </div>
           <Link
-            href={pageConfig.signUpPage}
+            href={pageConfig.signUp}
             className="flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 py-3 font-medium text-neutral-950 transition-colors hover:bg-neutral-200"
           >
             <UserPlus size={18} />
