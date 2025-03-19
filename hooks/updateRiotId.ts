@@ -1,16 +1,17 @@
 import { userIds } from "@/helpers/constants/interfaces/riot";
 import { accountService } from "@/helpers/services/account";
 import { useUser } from "@clerk/nextjs";
-import useGetRiotUser from "./useQueries/useGetRiotUser";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { queryKey } from "@/helpers/constants/types/queryKeys";
+import axios from "axios";
 
 export default function useUpdateRiotId() {
   const { user } = useUser();
 
   const prevMetadata = user?.unsafeMetadata || {};
 
-  async function updateRiotId({ name, tag, platform }: userIds) {
+  async function updateRiotId({ name, tag, platform, puuid }: userIds) {
     if (!user) return;
 
     try {
@@ -21,6 +22,7 @@ export default function useUpdateRiotId() {
           name: name,
           tag: tag,
           platform: platform,
+          puuid: puuid,
         },
       });
 

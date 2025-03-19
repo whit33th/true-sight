@@ -3,18 +3,15 @@ import { userIds } from "@/helpers/constants/interfaces/riot";
 import {
   Platform,
   PLATFORM_DISPLAY_NAMES,
- 
 } from "@/helpers/constants/types/riot";
+import useUpdateRiotId from "@/hooks/updateRiotId";
+import useGetRiotUser from "@/hooks/useQueries/useGetRiotUser";
 import { ChevronDown, Send } from "lucide-react";
-import React from "react";
 import { useForm } from "react-hook-form";
 import BorderFigure from "../UI/figures/border";
 
-import useUpdateRiotId from "@/hooks/updateRiotId";
-import useGetRiotUser from "@/hooks/useQueries/useGetRiotUser";
-
 export default function UpdateRiotIdForm({ platform }: { platform: Platform }) {
-  const { data } = useGetRiotUser();
+  const { data: riotUser } = useGetRiotUser();
 
   const { update } = useUpdateRiotId();
   const {
@@ -25,9 +22,9 @@ export default function UpdateRiotIdForm({ platform }: { platform: Platform }) {
   } = useForm<userIds>({
     mode: "onChange",
     defaultValues: {
-      name: data.gameName || "",
-      tag: data.tagLine || "",
-      platform: platform || "",
+      name: riotUser.gameName,
+      tag: riotUser.tagLine,
+      platform: platform,
     },
   });
 
@@ -38,7 +35,12 @@ export default function UpdateRiotIdForm({ platform }: { platform: Platform }) {
   const tagLength = tagValue?.length || 0;
 
   function onSubmit(data: userIds) {
-    update({ name: data.name, tag: data.tag, platform: data.platform });
+    update({
+      name: data.name,
+      tag: data.tag,
+      platform: data.platform,
+      puuid: riotUser.puuid,
+    });
   }
 
   // Array of available platforms

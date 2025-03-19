@@ -1,11 +1,14 @@
+import { IMatchHistoryParams } from "@/hooks/useQueries/useGetMatchHistory";
 import { PlatformPUUID, userIds } from "../interfaces/riot";
 
 export type QueryKeys = {
   getAccount: [userIds];
   leagueEntries: [PlatformPUUID];
-  summoner: [name: string];
-  matches: [page: number, count: number];
+  mastery: [PlatformPUUID];
+  summoner: [PlatformPUUID];
   champion: [id: number];
+  matchHistory: [IMatchHistoryParams];
+  matchInfo: [{ matchId: string; region: string }];
 };
 
 export type QueryKeyName = keyof QueryKeys;

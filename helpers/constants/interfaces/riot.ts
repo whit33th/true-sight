@@ -5,6 +5,7 @@ export interface userIds {
   tag: string;
   platform?: Platform;
   region?: Region;
+  puuid?: string;
 }
 export interface PlatformPUUID {
   encryptedPUUID: string;

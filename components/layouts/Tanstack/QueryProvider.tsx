@@ -17,9 +17,9 @@ export default function QueryProvider({ children }: IQueryClientProvider) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            gcTime: 60 * 1000,
+            gcTime: 5 * 60 * 1000,
             staleTime: 60 * 1000,
-            retry: 0,
+            retry: 1,
             refetchOnWindowFocus: false,
             placeholderData: keepPreviousData,
           },

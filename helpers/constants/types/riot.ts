@@ -1,5 +1,7 @@
-export type Region = "americas" | "asia" | "europe" | "esports";
+import axios from "axios";
 
+export type Region = "americas" | "asia" | "europe" | "esports";
+export type matchType = "ranked" | "normal" | "tourney" | "tutorial";
 export type Platform =
   | "br1"
   | "eun1"
@@ -61,3 +63,4 @@ export const PLATFORM_DISPLAY_NAMES: Record<Platform, string> = {
   tw2: "Taiwan",
   vn2: "Vietnam",
 };
+
