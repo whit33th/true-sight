@@ -56,9 +56,6 @@ importers:
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
-      prisma:
-        specifier: ^6.5.0
-        version: 6.5.0(typescript@5.8.2)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -108,6 +105,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(prettier@3.5.3)
+      prisma:
+        specifier: ^6.5.0
+        version: 6.5.0(typescript@5.8.2)
       typescript:
         specifier: ^5
         version: 5.8.2
