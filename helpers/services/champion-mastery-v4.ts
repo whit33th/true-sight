@@ -6,7 +6,7 @@ import { PlatformPUUID } from "../constants/interfaces/riot";
 class ChampionMasteryService {
   async getMastery({ encryptedPUUID, platform }: PlatformPUUID) {
     const response = await axios.get(
-      `https://${PLATFORM_HOSTS[platform]}/lol/champion-mastery/v4/champion-masteries/by-puuid/${encryptedPUUID}?api_key=${process.env.RIOT_API_KEY}`,
+      `https://${PLATFORM_HOSTS[platform]}/lol/champion-mastery/v4/champion-masteries/by-puuid/${encryptedPUUID}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`,
     );
     return response.data;
   }

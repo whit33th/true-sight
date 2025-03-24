@@ -1,8 +1,15 @@
+import axios from "axios";
 import React from "react";
-import { fetchRiotAccountData } from "../api/riot/data";
 
 export default async function Page() {
-  const {} = await fetchRiotAccountData();
+  // Используем переменную окружения для базового URL
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-  return <div> </div>;
+  const res = await axios.get(
+    `${baseUrl}/api/riot/account?name=${encodeURIComponent("whit33th")}&tag=${encodeURIComponent("3333")}`,
+  );
+
+  const data = res.data;
+  console.log(data);
+  return <div>page</div>;
 }

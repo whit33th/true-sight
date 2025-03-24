@@ -1,5 +1,5 @@
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { fetchRiotAccountData } from "../api/riot/data";
+import { fetchRiotAccountData } from "../../data/data";
 import ProfileClientPage from "./pageClient";
 
 export default async function ProfilePage() {

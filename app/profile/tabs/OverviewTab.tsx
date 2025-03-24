@@ -17,17 +17,17 @@ type OverviewTabProps = {
 
 export default function OverviewTab({ platform }: OverviewTabProps) {
   const { data: accountData } = useGetRiotUser();
-  const { data: mastery } = useGetMastery(accountData.puuid, platform);
   const { data: leagueEntries } = useGetLeagueEntries(
     accountData.puuid,
     platform,
   );
+  const { data: mastery } = useGetMastery(accountData.puuid, platform);
   const { data: version } = useGetLatestVersion();
   const { data: summoner } = useGetSummoner(accountData.puuid, platform);
 
   const userRank = "II"; // Example value
-  const totalGames = leagueEntries.wins + leagueEntries.losses;
-  const winrateValue = (leagueEntries.wins / totalGames) * 100;
+  const totalGames = leagueEntries?.wins + leagueEntries?.losses;
+  const winrateValue = (leagueEntries?.wins / totalGames) * 100;
   const winrate = winrateValue.toFixed(0);
 
   // Get top 3 champions by mastery points
@@ -52,33 +52,34 @@ export default function OverviewTab({ platform }: OverviewTabProps) {
                 <Image
                   src={`/icons/ranks/banners/${leagueEntries.tier.toLowerCase()}.webp`}
                   alt={leagueEntries.tier.toLowerCase() + " Banner"}
-                  fill
+                  width={128}
+                  height={128}
                   className="h-full w-full object-contain drop-shadow-sm"
                   loading="eager"
                 />
               </div>
 
               {/* Rank border positioned at the bottom */}
-              <div className="absolute right-0 bottom-0 left-0 z-10 flex justify-center">
+              <div className="absolute right-0 bottom-0 left-0 z-10 flex h-[331.5] w-[256px] justify-center">
                 <Image
                   src={`/icons/ranks/borders/${leagueEntries.tier.toLowerCase()}.webp`}
                   alt={leagueEntries.tier.toLowerCase() + " Border"}
                   width={256}
-                  height={331.5}
-                  className="drop-shadow-sm"
+                  height={256}
+                  className="h-full w-full object-cover drop-shadow-sm"
                   loading="eager"
                 />
               </div>
 
               {/* User avatar absolutely positioned 20px from bottom */}
-              <div className="absolute bottom-[90px] left-1/2 -translate-x-1/2 overflow-hidden">
+              <div className="absolute bottom-[90px] left-1/2 h-[88px] w-[88px] -translate-x-1/2 overflow-hidden">
                 <Image
                   src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${summoner.profileIconId}.png`}
                   alt="User Avatar"
-                  width={88}
-                  height={88}
+                  width={64}
+                  height={64}
                   loading="eager"
-                  className="aspect-square rounded-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="aspect-square h-full w-full rounded-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
 

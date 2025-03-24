@@ -30,7 +30,7 @@ export default function useGetRiotUser(): Result {
         tag,
       }),
     enabled: !!name && !!tag,
-    retry: false,
+    retry: 1,
     staleTime: 1000 * 60 * 5,
   });
 

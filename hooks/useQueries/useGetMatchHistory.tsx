@@ -31,7 +31,7 @@ export default function useGetMatchHistory({
   queue,
   type,
   start = 0,
-  count = 20,
+  count = 5,
 }: IMatchHistoryParams): Result {
   const { data, isLoading, error, isSuccess } = useQuery({
     queryKey: queryKey("matchHistory", {

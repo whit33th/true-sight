@@ -38,6 +38,7 @@ export default function useGetLeagueEntries(
         platform,
       }),
     select: (data) => data[0] || [],
+    retry: 3,
 
     enabled: !!puuid && !!platform,
   });

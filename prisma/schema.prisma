@@ -14,12 +14,11 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  clerkId   String   @unique
-  uuid      String   @unique
-  name      String?
-  tag       String?
-  platform  String?
+  id        String   @id 
+  uuid      String   
+  name      String
+  tag       String
+  platform  String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
 }

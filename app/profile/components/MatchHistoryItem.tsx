@@ -168,8 +168,9 @@ export default function MatchHistoryItem({
           <Image
             src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${player.championName}.png`}
             alt={player.championName}
-            fill
-            className="object-cover"
+            width={48}
+            height={48}
+            className="h-full w-full object-cover"
           />
           <div className="absolute right-0 bottom-0 rounded-tl-xs bg-black/50 p-[3px] text-[9px] font-bold text-white backdrop-blur-xl">
             {player.champLevel}

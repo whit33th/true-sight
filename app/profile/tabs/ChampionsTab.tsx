@@ -21,7 +21,7 @@ export default function ChampionsTab({ platform }: ChampionsTabProps) {
         {mastery && mastery.length > 0 ? (
           mastery
             .sort((a, b) => b.championPoints - a.championPoints)
-            // .slice(0, 8)
+            .slice(0, 8)
             .map((championData, index) => (
               <ChampionCard
                 key={championData.championId}

@@ -23,14 +23,14 @@ class MatchService {
     params.append("count", count.toString());
 
     const response = await axios.get(
-      `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?${params.toString()}&api_key=${process.env.RIOT_API_KEY}`,
+      `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?${params.toString()}&api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`,
     );
     return response.data;
   }
 
   async getMatchInfo(matchId: string, region: Region = "europe") {
     const response = await axios.get(
-      `https://${region}.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${process.env.RIOT_API_KEY}`,
+      `https://${region}.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`,
     );
     return response.data;
   }

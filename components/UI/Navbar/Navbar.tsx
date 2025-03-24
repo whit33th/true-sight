@@ -39,11 +39,6 @@ export default function Navbar({ children }: INavbar) {
     [pathname],
   );
 
-  // Helper function to get current route information
-  const getCurrentRoute = () => {
-    return routes.find((route) => route.active) || routes[0];
-  };
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
     document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
@@ -76,8 +71,9 @@ export default function Navbar({ children }: INavbar) {
         <Image
           src="/img/sprite/champion1.webp"
           alt="posterAuthBg"
-          fill
-          className="absolute inset-0 z-[-1] object-cover opacity-10 blur-[20px]"
+          width={48}
+          height={48}
+          className="absolute inset-0 z-[-1] h-full w-full object-cover opacity-15 blur-[20px]"
         />
         <div className="flex h-14 w-full items-center justify-between px-4 py-3">
           {/* Left side - Logo and Navigation */}
@@ -176,6 +172,7 @@ export default function Navbar({ children }: INavbar) {
 
             <SignedOut>
               <Link
+                prefetch
                 href={pageConfig.signIn}
                 className="relative hidden h-full items-center justify-center rounded-sm bg-neutral-800 px-6 text-xs font-medium text-nowrap text-neutral-200 shadow-sm transition-all hover:bg-neutral-700 md:flex"
               >
@@ -255,7 +252,7 @@ export default function Navbar({ children }: INavbar) {
         </div>
 
         {/* Third section - current page icon */}
-        <div
+        {/* <div
           className={`${pathname === pageConfig.signIn || pathname === pageConfig.signUp ? "!hidden" : ""} group hidden w-full border-t border-neutral-400/20 px-4 py-4 md:flex md:items-center`}
         >
           <div className="flex items-center gap-4 px-24">
@@ -266,7 +263,7 @@ export default function Navbar({ children }: INavbar) {
               {getCurrentRoute().name}
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* Mobile full-height menu */}
         <AnimatePresence>

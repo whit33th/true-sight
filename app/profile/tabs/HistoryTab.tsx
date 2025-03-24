@@ -9,13 +9,15 @@ export default function HistoryTab() {
   const { data: accountData } = useGetRiotUser();
   const { data: matchHistory } = useGetMatchHistory({
     puuid: accountData.puuid,
+    region: 'europe',
+    count: 10,
   });
 
   const { matches: matchesData, isLoading: matchesLoading } =
     useGetMultipleMatches({
-      matchIds: matchHistory?.slice(0, 5) || [],
-      enabled: !!matchHistory && matchHistory.length > 0,
+      matchIds: matchHistory || [],
     });
+    console.log(matchesData)
   return (
     <div className="p-6">
       <h2 className="mb-4 text-xl font-bold text-neutral-800">Match History</h2>

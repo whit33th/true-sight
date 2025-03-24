@@ -1,7 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useMemo } from "react";
-import { motion } from "motion/react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import React, { useMemo } from "react";
 import { UserRound, History, ChartArea, Settings, Star } from "lucide-react";
 
 export type ProfileTab =
@@ -24,10 +22,6 @@ export default function ProfileTabs({
   activeTab: ProfileTab;
   setActiveTab: (tab: ProfileTab) => void;
 }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-
   const tabs = useMemo<TabItem[]>(
     () => [
       { id: "overview", label: "Overview", icon: <UserRound size={18} /> },
@@ -39,34 +33,8 @@ export default function ProfileTabs({
     [],
   );
 
-  // Update activeTab from URL on initial load
-  useEffect(() => {
-    const tabParam = searchParams?.get("tab") as ProfileTab;
-    if (tabParam && tabs.some((tab) => tab.id === tabParam)) {
-      setActiveTab(tabParam);
-    }
-  }, [searchParams, setActiveTab, tabs]);
-
-  // Tab configuration
-
-  // Create query string utility function
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams?.toString());
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams],
-  );
-
-  // Handle tab click - update URL and state
+  // Handle tab click - update state only
   const handleTabClick = (tabId: ProfileTab) => {
-    // Update URL without refreshing page
-    router.push(`${pathname}?${createQueryString("tab", tabId)}`, {
-      scroll: false,
-    });
-
-    // Update state
     setActiveTab(tabId);
   };
 
@@ -84,13 +52,6 @@ export default function ProfileTabs({
                   : "bg-transparent text-neutral-600 hover:bg-neutral-300/50"
               }`}
             >
-              {activeTab === tab.id && (
-                <motion.div
-                  layoutId="activeTabIndicator"
-                  className="absolute inset-0 rounded-sm bg-neutral-800"
-                  transition={{ duration: 0.2 }}
-                />
-              )}
               <span className="relative z-10 flex items-center gap-1.5">
                 {tab.icon}
                 {tab.label}

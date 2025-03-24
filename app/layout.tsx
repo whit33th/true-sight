@@ -6,6 +6,8 @@ import { ClerkLoaded, ClerkProvider, GoogleOneTap } from "@clerk/nextjs";
 import Navbar from "@/components/UI/Navbar/Navbar";
 import { pageConfig } from "@/helpers/constants/pageConfig";
 import { Toaster } from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import NextTopLoader from "nextjs-toploader";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -22,16 +24,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <ClerkProvider touchSession={false} afterSignOutUrl={pageConfig.signIn}>
       <html lang="en" className="h-full">
         <body className={`${notoSans.variable} flex h-screen flex-col`}>
+          <NextTopLoader color="#2299DD" showSpinner={false} height={3} />
           <ClerkLoaded>
             <QueryProvider>
               <Navbar>{children}</Navbar>
               <Toaster richColors />
               <GoogleOneTap cancelOnTapOutside />
+              <SpeedInsights />
             </QueryProvider>
           </ClerkLoaded>
         </body>

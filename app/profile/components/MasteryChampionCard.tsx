@@ -52,13 +52,13 @@ export default function MasteryChampionCard({
     >
       <div className="relative z-[1] flex items-center gap-3 p-2">
         {/* Champion image */}
-        <div className="relative overflow-hidden rounded-sm border-2 border-white/20">
+        <div className="relative h-12 w-12 overflow-hidden rounded-sm border-2 border-white/20">
           <Image
-            src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championsNames[champion.championId]}_0.jpg`}
+            src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championsNames[champion.championId]}_0.jpg`}
             alt={`Champion ${champion.championId}`}
             width={100}
             height={100}
-            className="h-12 w-12 object-cover"
+            className="object-cover object-top"
           />
         </div>
 

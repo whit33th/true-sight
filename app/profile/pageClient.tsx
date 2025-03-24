@@ -15,19 +15,19 @@ export default function ProfileClientPage({
   bgChampionName,
 }: {
   platform: Platform;
-  bgChampionName: string ;
+  bgChampionName: string;
 }) {
   const [activeTab, setActiveTab] = useState<ProfileTab>("overview");
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col bg-neutral-900">
-      <div className="absolute inset-0 overflow-hidden">
+    <div className="relative flex min-h-screen w-full flex-col">
+      <div className="absolute inset-0 h-full w-full overflow-hidden">
         <Image
           src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${bgChampionName}_0.jpg`}
           alt="Profile Background"
-          fill
-          className="scale-125 object-cover object-center opacity-30 blur-[20px]"
-          priority
+          width={24}
+          height={24}
+          className="h-full w-full scale-125 object-cover object-top opacity-100 blur-[40px]"
         />
 
         <div className="absolute inset-0 bg-neutral-900/20"></div>

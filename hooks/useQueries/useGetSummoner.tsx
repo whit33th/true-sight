@@ -1,6 +1,6 @@
 import { queryKey } from "@/helpers/constants/types/queryKeys";
 import { Platform } from "@/helpers/constants/types/riot";
-import { summonerService } from "@/helpers/services/Summoner-v4";
+import { summonerService } from "@/helpers/services/summoner-v4";
 import { useQuery } from "@tanstack/react-query";
 
 interface Summoner {
