@@ -32,7 +32,7 @@ export async function fetchRiotAccountData() {
       throw new Error("Failed to get puuid");
     }
 
-    const [summonerPromise, leagueEntriesPromise, championIdsPromise] =
+    const [summonerPromise, leagueEntriesPromise, ] =
       await Promise.all([
         // Summoner data
         queryClient.fetchQuery({
@@ -77,7 +77,7 @@ export async function fetchRiotAccountData() {
     }
 
     // Fetch only first few matches for initial load (pagination can be used for more)
-    const matchHistoryPromise = queryClient.fetchQuery({
+    const matchHistoryPromise = queryClient.prefetchQuery({
       queryKey: queryKey("matchHistory", { puuid }),
       queryFn: () => matchService.getMatchHistory({ puuid, count: 5 }), // Limit to 5 matches initially
     });
@@ -107,6 +107,7 @@ export async function fetchRiotAccountData() {
       summoner: await summonerPromise,
       mastery,
       accountData,
+      matchHistory,
     };
   } catch (error) {
     console.error("Error fetching Riot account data:", error);
